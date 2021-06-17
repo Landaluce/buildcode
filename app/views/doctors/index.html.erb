@@ -1,0 +1,32 @@
+
+<p id="notice"><%= notice %></p>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Crm</th>
+      <th>Crm uf</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @doctors.each do |doctor| %>
+      <tr>
+        <td><%= doctor.name %></td>
+        <td><%= doctor.crm %></td>
+        <td><%= doctor.crm_uf %></td>
+        <td><%= link_to 'Show', doctor, class:'btn btn-primary'%></td>
+        <td><%= link_to 'Edit', edit_doctor_path(doctor), class:'btn btn-primary' %></td>
+        <td>
+          <% doctor.id %>
+          <%= button_to 'Delete', doctor, class:'btn btn-danger', method: :delete, data: { action: "destroy" , confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Doctor', new_doctor_path, class:'btn btn-success' %>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Starts at</th>
+      <th>Ends at</th>
+      <th>Patient</th>
+      <th>Doctor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.starts_at %></td>
+        <td><%= appointment.ends_at %></td>
+        <td><%= appointment.patient_id %></td>
+        <td><%= appointment.doctor_id %></td>
+        <td><%= link_to 'Show', appointment, class:'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_appointment_path(appointment), class:'btn btn-primary' %></td>
+        <td><%= button_to 'Delete', appointment, :method => :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New Appointment', new_appointment_path, class:'btn btn-success' %>
